@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+html {
+  font-family: Open Sans;
+  font-size: 10px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.title {
+  font-size: 4.5rem;
+  color: deepskyblue;
+  padding: 3.5rem;
+  text-align: center;
+}
+
+.game-won{
+  // background: red;
+  color:red;
+  font-size:70px;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  transition: transform 1s;
+  
+
+}
+button{
+  font-size: 40px;
+
+}
+
+
+
+.wrapper {
+  // border:red 2px solid;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  perspective-origin: 50% 30%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  // align-items: center;
+  padding: 3rem;
+  max-width: 900px;
+
+  .card {
+    width: 20rem;
+    height: 26rem;
+    color: white;
+    line-height: 25rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4rem;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    flex-basis: 23%;
+
+    .card__face {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      backface-visibility: hidden;
+    }
+
+    .card__face--front {
+      background: deeppink;
+      font-size: 70px;
+     
+    }
+
+    .card__face--back {
+      background: url(backface.png);
+      // background-image: none;
+      transform: rotateY(180deg);
+      
+    }
+
+    &.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    &.is-true{
+      animation-name:is-true-animation;
+      animation-delay: 500ms;
+      animation-iteration-count: 1;
+      animation-duration: 2000ms;
+      animation-timing-function:linear;
+      // transform: scale(.9);
+    }
+
+    &.is-won{
+      animation-name: turn;
+      animation-iteration-count: infinite;
+      animation-duration: 3500ms;
+      animation-timing-function:linear;
+    }
+  }
+}
+
+
+@keyframes turn {
+  0% {transform:rotateY(180deg);}
+  20% {transform:rotateY(-180deg);}
+  40%{transform:rotateX(180deg);}
+  60%{transform:rotateX(-180deg);}
+  80% {transform:rotateZ(180deg);}
+  100% {transform:rotateZ(-180deg);}
+  }
+
+  @keyframes is-true-animation {
+    0% {transform:rotateY(180deg);}
+    50% {transform:rotateY(-180deg);}
+
+    }
+
